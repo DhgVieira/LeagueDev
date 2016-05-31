@@ -30,7 +30,8 @@
         "guzzlehttp/guzzle": "^6.2",
         "twbs/bootstrap": "^3.3",
         "leafo/lessphp": "^0.5.0",
-        "braincrafted/bootstrap-bundle": "^2.2"
+        "braincrafted/bootstrap-bundle": "^2.2",
+        "friendsofsymfony/jsrouting-bundle": "^1.6"
     },
     "require-dev": {
         "sensio/generator-bundle": "^3.0",

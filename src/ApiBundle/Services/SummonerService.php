@@ -192,7 +192,7 @@ class SummonerService {
     public function getSummonerLeague($summonerId)
     {
         try {
-            $response = $this->client->get('v2.5/league/by-summoner/' . $summonerId . '?api_key=' . $this->key);
+            $response = $this->client->get('v2.5/league/by-summoner/' . $summonerId . '/entry?api_key=' . $this->key);
             if ($response->getStatusCode() != 200) {
                 throw new \Exception('Service Not Available');
             }

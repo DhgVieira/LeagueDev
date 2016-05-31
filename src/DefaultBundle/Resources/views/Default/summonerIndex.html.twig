@@ -1,0 +1,56 @@
+
+{% extends '@DefaultBundle/Resources/views/Default/index.html.twig' %}
+{% block content %}
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="row-fluid">
+        <div class="box black span11" ontablet="span6" ondesktop="span11">
+            <div class="box-header">
+                <h2><i class="halflings-icon white user"></i><span class="break"></span>Dados do Invocador</h2>
+                <div class="box-icon">
+                    <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
+                    <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
+                </div>
+            </div>
+            {% if code is defined %}
+            <div class="alert-danger">
+                <strong>Invocador não encontrado</strong>
+            </div>
+            {% else %}
+            <div class="box-content">
+                <ul class="dashboard-list metro">
+                    <li class="green">
+                        <img class="avatar" alt="Icone Invocador"
+                             src="{{ asset('bootstrap/img/profileicon/'~summonerData.profileIconId~'.png') }}"
+                             style="width: 70px;height: 70px">
+                        <strong style="font-size: 16px">Name:</strong> {{ summonerData.name }} <br>
+                        <strong style="font-size: 16px">Level:</strong> {{ summonerData.summonerLevel }} <br>
+                        <strong style="font-size: 16px">Id:</strong> {{ summonerData.id }} <br>
+                        <strong> </strong> <br>
+                    </li>
+                    {% if  summonerTier.tier == 'SILVER' %}
+                    <li class="yellow">
+                        {% else %}
+                    <li class="yellow">
+                        {% endif %}
+                        {% set teste = [summonerTier.tier, summonerDivision.division]|join('_') %}
+                        <img class="avatar" alt="Tier"
+                             src="{{ asset('bootstrap/img/icon-tier/'~teste|lower~'.png') }}"
+                             style="width: 70px;height: 70px">
+                        <strong style="font-size: 16px">Liga:</strong> {{ summonerTier.name }} <br>
+                        <strong style="font-size: 16px">Tier:</strong> {{ summonerTier.tier }} <br>
+                        <strong style="font-size: 16px">Divisão:</strong> {{ summonerDivision.division }} <br>
+                        <strong style="font-size: 16px">Pontos:</strong> {{ summonerDivision.leaguePoints }}
+                    </li>
+                </ul>
+            </div>
+        </div><!--/span-->
+        {% endif %}
+    </div>
+
+    <hr>
+
+    </div>
+{% endblock %}

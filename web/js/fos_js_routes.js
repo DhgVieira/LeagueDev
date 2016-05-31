@@ -1,0 +1,1 @@
+fos.Router.setData({"base_url":"","routes":{"my_route_to_expose":{"tokens":[["text","\/history"]],"defaults":[],"requirements":[],"hosttokens":[]}},"prefix":"","host":"localhost","scheme":"http"});

@@ -1,0 +1,4 @@
+rocket_pms:
+    resource: "@DefaultBundle/Controller"
+    type:     annotation
+    

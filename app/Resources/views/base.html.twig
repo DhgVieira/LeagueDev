@@ -2,9 +2,14 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}LoLNoob!{% endblock %}</title>
         {% block stylesheets %}
-            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}">
+            <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" rel="stylesheet">
+            <link id="bootstrap-style" href="{{ asset('bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+            <link href="{{ asset('bootstrap/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
+            <link id="base-style"  href="{{ asset('bootstrap/css/style.css')}}" rel="stylesheet">
+            <link id="base-style-responsive"   href="{{ asset('bootstrap/css/style-responsive.css')}}" rel="stylesheet">
+            <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -13,6 +18,62 @@
         {% endblock %}
         {% block javascripts %}
             <script src="{{ asset('bootstrap/js/bootstrap.mim.js') }}"></script>
+            <script src="{{ asset('bootstrap/js/jquery-1.9.1.min.js')}}"></script>
+            <script src="{{ asset('bootstrap/js/jquery-migrate-1.0.0.min.js')}}"></script>
+            <script src="{{ asset("bundles/default/js/history.js") }}"></script>
+            <script src="{{ asset('bootstrap/js/jquery-ui-1.10.0.custom.min.js')}}"></script>
+            <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+            <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.ui.touch-punch.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/modernizr.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/bootstrap.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.cookie.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/fullcalendar.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.dataTables.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/excanvas.js')}}"></script>
+            <script src="{{ asset('bootstrap/js/jquery.flot.js')}}"></script>
+            <script src="{{ asset('bootstrap/js/jquery.flot.pie.js')}}"></script>
+            <script src="{{ asset('bootstrap/js/jquery.flot.stack.js')}}"></script>
+            <script src="{{ asset('bootstrap/js/jquery.flot.resize.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.chosen.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.uniform.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.cleditor.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.noty.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.elfinder.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.raty.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.iphone.toggle.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.uploadify-3.1.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.gritter.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.imagesloaded.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.masonry.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.knob.modified.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/jquery.sparkline.min.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/counter.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/retina.js')}}"></script>
+
+            <script src="{{ asset('bootstrap/js/custom.js')}}"></script>
         {% endblock %}
     </body>
 </html>

@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new DefaultBundle\DefaultBundle(),
             new Braincrafted\Bundle\BootstrapBundle\BraincraftedBootstrapBundle(),
             new ApiBundle\ApiBundle(),
+            new FOS\JsRoutingBundle\FOSJsRoutingBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {
