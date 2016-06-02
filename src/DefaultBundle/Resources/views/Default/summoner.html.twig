@@ -14,7 +14,7 @@
     </div>
     {% if code is defined %}
         <div class="alert-danger">
-            <strong>Invocador não encontrado</strong>
+            <strong>{% if message is defined %} {{ message }} {% else %}Invocador não encontrado{% endif %}</strong>
         </div>
     {% else %}
         <div class="box-content">

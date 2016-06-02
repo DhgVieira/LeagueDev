@@ -89,11 +89,15 @@ class DefaultController extends Controller
         try {
             $summonerData = $service->getSummonerByName($summonerName);
             $summonerMathHistories = $service->getMatchHistory($summonerData->$string->id);
+            $normalIterator = 0;
+            $rankedIterator = 0;
             foreach ($summonerMathHistories->games as $summonerMathHistory) {
                 if ($summonerMathHistory->subType == 'NORMAL') {
-                    $arrGames['normal'][] = $summonerMathHistory;
+                    $arrGames['normal'][$normalIterator] = $summonerMathHistory;
+                    $normalIterator++;
                 } else if ($summonerMathHistory->subType == 'RANKED_SOLO_5x5') {
-                    $arrGames['ranked'][] = $summonerMathHistory;
+                    $arrGames['ranked'][$rankedIterator] = $summonerMathHistory;
+                    $rankedIterator++;
                 }
             }
         } catch (\Exception $e) {
@@ -101,10 +105,25 @@ class DefaultController extends Controller
                     'code' => $e->getCode(), 'message' => $e->getMessage())
             );
         }
-
-
         return $this->render('DefaultBundle:Default:history.html.twig', array('post' => true,
             'summonerData' => $summonerData->$string, 'summonerName' => $summonerName, 'arrGames' => $arrGames, 'leagueExt' => new LeagueExtension($this->container)));
         
+    }
+
+    /**
+     * @Route("/game", name="Default_game", options={"expose"=true})
+     *
+     */
+    public function game(Request $request)
+    {
+//        $request->setLocale('pt');
+        $gameId = $request->request->get('gameId');
+        $service = new SummonerService('07da5c2b-a3c3-43e6-a958-d8483a134c23', 'br');
+        $summonerMath = $service->getMatch($gameId);
+        $teste = $summonerMath->participants;
+        return $this->render('DefaultBundle:Default:match.html.twig', array(
+                'post' => true, 'summoners' => $summonerMath->participants, 'leagueExt' => new LeagueExtension($this->container))
+        );
+
     }
 }

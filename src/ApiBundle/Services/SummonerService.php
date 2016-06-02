@@ -165,6 +165,24 @@ class SummonerService {
     }
 
     /**
+     * @param $matchId
+     * @return mixed
+     * @throws \Exception
+     */
+    public function getMatch($matchId)
+    {
+        try {
+            $response = $this->client->get('v2.2/match/' . $matchId . '?api_key=' . $this->key);
+            if ($response->getStatusCode() != 200) {
+                throw new \Exception('Service Not Available');
+            }
+            return json_decode((String) $response->getBody());
+        } catch (\Exception $e) {
+            throw $e;
+        }
+    }
+
+    /**
      * @param $summonerId
      * @return array
      * @throws \Exception

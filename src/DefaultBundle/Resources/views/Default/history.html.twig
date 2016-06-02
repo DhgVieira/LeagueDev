@@ -1,90 +1,107 @@
 {#{% extends '@DefaultBundle/Resources/views/Default/index.html.twig' %}#}
+
+{% block stylesheets %}
+    <style type="text/css">
+        .ui-dialog {
+            z-index: 1000 !important;
+        }
+
+        .ui-widget-overlay {
+            z-index: 50 !important;
+        }
+        .ui-dialog-titlebar-close{
+            background-color: black;
+            width: 16px !important;
+            height:20px !important;
+        }
+    </style>
+{% endblock %}
 {% block content %}
     <br/>
     <br/>
     <br/>
     <br/>
-
     <div class="row-fluid">
-        {#<div class="box black span11" ontablet="span6" ondesktop="span11">#}
-        {#<div class="box-header">#}
-        {#<h2><i class="halflings-icon white user"></i><span class="break"></span>Historico de Partidas</h2>#}
-        {#<div class="box-icon">#}
-        {#<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>#}
-        {#<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>#}
-        {#</div>#}
-        {#</div>#}
         {% if code is defined %}
             <div class="alert-danger">
                 <strong>Invocador não encontrado</strong>
             </div>
         {% else %}
+            <div class="dialog" title="Partida">
+            </div>
             {% if arrGames.normal is defined %}
 
                 <div class="box span4" onTablet="span6" onDesktop="span4">
                     <div class="box-header">
-                        <h2><i class="halflings-icon white user"></i><span class="break"></span>Partidas Unranked 5x5
+                        {#<i class="halflings-icon white user"></i><span class="break"></span>#}
+                        <h2>Partidas Normais 5x5
                         </h2>
-                        <div class="box-icon">
-                            <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-                            <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-                        </div>
+                        {#<div class="box-icon">#}
+                            {#<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>#}
+                            {#<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>#}
+                        {#</div>#}
                     </div>
                     <div class="box-content">
-                        <ul class="dashboard-list span12">
+                        <ul class="dashboard-list">
                             {% for normal in arrGames.normal %}
-                                {#{{ dump(normal.stats) }}#}
-                                <li class="span6" style="margin-left: 0">
+                                <li style="margin-left: 0">
+                                    <span class="text-left">
                                     <a href="#">
                                         <img class="avatar"
                                              alt="{{ leagueExt.getChampionIcon(normal.championId)|replace({'.png': ''}) }}"
                                              src="{{ asset('bootstrap/img/champion/'~leagueExt.getChampionIcon(normal.championId)) }}">
                                     </a>
 
-                                    <span class="status">
-                                    <strong>Status:</strong> {% if normal.stats.win == true %} <span
+                                        {#<span class="status">#}
+                                        <strong>Status:</strong> {% if normal.stats.win == true %} <span
                                                 class="label label-success"> Vitoria </span>{% else %} <span
                                                 class="label label-important">Derrota</span>{% endif %}
-                                        </span>
-                                    <br/>
-                                    <span class="name">
-                                    <strong>Name:</strong> <span> testeasdasdsd</span>
-                                    </span>
-                                    <br/>
-                                    <span class="data">
-                                    {% set timestamp = (normal.createDate / 1000)|round(0, 'floor') %}
+                                        {#</span>#}
+                                        <br/>
+                                        {% set timestamp = (normal.createDate / 1000)|round(0, 'floor') %}
                                         <strong>Data:</strong> {{ timestamp|date('d/m/Y') }}
-                                    </span>
-                                </li>
-                                <li class="text-right">
-                                    <strong class="text-center">KDR</strong>
+                                        <br/>
+
+                                    <strong>Detalhes: </strong><button class="button-game btn-success"
+                                                                       gameId="{{ normal.gameId }}">game
+                                        </button>
+                                        </span>
+                                    <span class="text-center" style="float: right; margin-top: -39px">
+                                         <strong class="text-left">KDR</strong>
                                     <br/>
-                                    <strong>{% if normal.stats.championsKilled is defined %}{{ normal.stats.championsKilled }}{% else %}0{% endif %}/
-                                        {% if normal.stats.numDeaths is defined %}{{ normal.stats.numDeaths }}{% else %}0{% endif %}/
+                                    <strong>{% if normal.stats.championsKilled is defined %}{{ normal.stats.championsKilled }}{% else %}0{% endif %}
+                                        /
+                                        {% if normal.stats.numDeaths is defined %}{{ normal.stats.numDeaths }}{% else %}0{% endif %}
+                                        /
                                         {% if normal.stats.assists is defined %}{{ normal.stats.assists }}{% else %}0{% endif %}</strong>
                                     <br/>
                                     <strong>#</strong>
+                                    </span>
                                 </li>
+                                {#<li class="text-right">#}
+                                {##}
+                                {#</li>#}
                             {% endfor %}
 
                         </ul>
                     </div>
-
                 </div><!--/span-->
             {% endif %}
             {% if arrGames.ranked is defined %}
                 <div class="box span4" onTablet="span6" onDesktop="span4">
                 <div class="box-header">
-                    <h2><i class="halflings-icon white user"></i><span class="break"></span>Partidas Ranqueadas 5x5</h2>
-                    <div class="box-icon">
-                        <a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>
-                        <a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>
-                    </div>
+                    {#<i class="halflings-icon white star"></i><span class="break"></span>#}
+                    <h2>Partidas Ranqueadas 5x5</h2>
+                    {#<div class="box-icon">#}
+                        {#<a href="#" class="btn-minimize"><i class="halflings-icon white chevron-up"></i></a>#}
+                        {#<a href="#" class="btn-close"><i class="halflings-icon white remove"></i></a>#}
+                    {#</div>#}
                 </div>
                 <div class="box-content">
                 <ul class="dashboard-list">
                 {% for ranked in arrGames.ranked %}
-                    <li class="span6" style="margin-left: 0">
+                    <li style="margin-left: 0">
+                         <span class="text-left">
                         <a href="#">
                             <img class="avatar"
                                  alt="{{ leagueExt.getChampionIcon(ranked.championId)|replace({'.png': ''}) }}"
@@ -97,24 +114,35 @@
                                                 class="label label-important">Derrota</span>{% endif %}
                                         </span>
                         <br/>
-                                    <span class="name">
-                                    <strong>Name:</strong> <span> testeasdasdsd</span>
-                                    </span>
-                        <br/>
-                                    <span class="data">
-                                    {% set timestamp = (ranked.createDate / 1000)|round(0, 'floor') %}
-                                        <strong>Data:</strong> {{ timestamp|date('d/m/Y') }}
+                             {% set timestamp = (ranked.createDate / 1000)|round(0, 'floor') %}
+                             <strong>Data:</strong> {{ timestamp|date('d/m/Y') }}
+                             <br/>
+                        <strong>Detalhes: </strong>
+                        <button class="button-game btn-success" gameId="{{ ranked.gameId }}">game</button>
+                             </span>
+                    <span class="text-center" style="float: right; margin-top: -39px">
+                                         <strong class="text-left">KDR</strong>
+                                    <br/>
+                                    <strong>{% if ranked.stats.championsKilled is defined %}{{ ranked.stats.championsKilled }}{% else %}0{% endif %}
+                                        /
+                                        {% if ranked.stats.numDeaths is defined %}{{ ranked.stats.numDeaths }}{% else %}0{% endif %}
+                                        /
+                                        {% if ranked.stats.assists is defined %}{{ ranked.stats.assists }}{% else %}0{% endif %}</strong>
+                                    <br/>
+                                    <strong>#</strong>
                                     </span>
                     </li>
-                    <li class="text-right">
-                        <strong class="text-center">KDR</strong>
-                        <br/>
-                        <strong>{% if ranked.stats.championsKilled is defined %}{{ ranked.stats.championsKilled }}{% else %}0{% endif %}/
-                            {% if ranked.stats.numDeaths is defined %}{{ ranked.stats.numDeaths }}{% else %}0{% endif %}/
-                            {% if ranked.stats.assists is defined %}{{ ranked.stats.assists }}{% else %}0{% endif %}</strong>
-                        <br/>
-                        <strong>#</strong>
-                    </li>
+                    {#<li class="text-right">#}
+                    {#<strong class="text-center">KDR</strong>#}
+                    {#<br/>#}
+                    {#<strong>{% if ranked.stats.championsKilled is defined %}{{ ranked.stats.championsKilled }}{% else %}0{% endif %}#}
+                    {#/#}
+                    {#{% if ranked.stats.numDeaths is defined %}{{ ranked.stats.numDeaths }}{% else %}0{% endif %}#}
+                    {#/#}
+                    {#{% if ranked.stats.assists is defined %}{{ ranked.stats.assists }}{% else %}0{% endif %}</strong>#}
+                    {#<br/>#}
+                    {#<strong>#</strong>#}
+                    {#</li>#}
                 {% endfor %}
             {% endif %}
             </ul>
@@ -128,4 +156,43 @@
     {#<hr>#}
 
     {#</div>#}
-{% endblock     %}
+
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".dialog").dialog({
+                autoOpen: false,
+                width: 'auto',
+                zIndex: 10000,
+                modal: true,
+                show: {
+                    effect: "blind",
+                    duration: 1000
+                },
+                hide: {
+                    effect: "explode",
+                    duration: 1000
+                },
+            });
+            $('.ui-dialog-titlebar-close').addClass('halflings-icon white remove');
+            $('.button-game').on('click', function () {
+
+                var ajaxSetup = {
+                    url: Routing.generate("Default_game"),
+                    type: "post",
+                    data: {'gameId': $(this).attr("gameId")},
+                    success: function (response) {
+                        if (response.error) {
+                            $(".dialog").html(response.error)
+                        } else {
+                            $(".dialog").html(response).dialog("open");
+                        }
+                    }
+                }
+                $.ajax(ajaxSetup);
+
+            });
+        });
+    </script>
+{% endblock %}

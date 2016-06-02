@@ -1,0 +1,72 @@
+{% block stylesheets %}
+    <style type="text/css">
+        .ui-dialog-title {
+            color: white !important;
+        }
+        .ui-dialog-titlebar{
+            background: black;
+        }
+    </style>
+{% endblock %}
+<div class="box  span4" onTablet="span6" onDesktop="span4">
+    <div class="box-header">
+        <h2>Time A
+        </h2>
+    </div>
+    <div class="box-content">
+        <ul class="dashboard-list">
+            {% for summoner in summoners %}
+                {% if summoner.teamId == 100 %}
+                    <li>
+
+                        <a href="#">
+                            <img class="avatar"
+                                 alt="{{ leagueExt.getChampionIcon(summoner.championId)|replace({'.png': ''}) }}"
+                                 src="{{ asset('bootstrap/img/champion/'~leagueExt.getChampionIcon(summoner.championId)) }}">
+                        </a>
+
+                        {#<span class="status">#}
+                        <strong>tier: </strong>{{ summoner.highestAchievedSeasonTier | trans}}
+                        {#</span>#}
+                        <br/>
+
+                        <strong>Lane: </strong>  {{ leagueExt.getLane(summoner.timeline.lane, summoner.timeline.role) }}
+                        {#{% if summoner.timeline.lane  == 'BOTTOM' and summoner.timeline.role == 'DUO_CARRY' %} ADC#}
+                        {#{% elseif summoner.timeline.lane  == 'BOTTOM' and summoner.timeline.role == 'DUO_SUPPORT' %} Suporte#}
+                        {#{% else %} {{ summoner.timeline.lane }}{% endif %}#}
+                        <br/>
+
+                        <strong>Detalhes: </strong>{% if summoner.stats.kills is defined %}{{ summoner.stats.kills }}{% else %}0{% endif %}/{% if summoner.stats.deaths is defined %}{{ summoner.stats.deaths }}{% else %}0{% endif %}/{% if summoner.stats.assists is defined %}{{ summoner.stats.assists }}{% else %}0{% endif %}
+
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div><!--/span-->
+<div class="box  span4" onTablet="span6" onDesktop="span4">
+    <div class="box-header">
+        <h2>Time B
+        </h2>
+    </div>
+    <div class="box-content">
+        <ul class="dashboard-list">
+            {% for summoner in summoners %}
+                {% if summoner.teamId == 200 %}
+                    <li>
+                        <a href="#">
+                            <img class="avatar"
+                                 alt="{{ leagueExt.getChampionIcon(summoner.championId)|replace({'.png': ''}) }}"
+                                 src="{{ asset('bootstrap/img/champion/'~leagueExt.getChampionIcon(summoner.championId)) }}">
+                        </a>
+                        <strong>tier: </strong>{{ summoner.highestAchievedSeasonTier }}
+                        <br/>
+                        <strong>Lane: </strong> {{ leagueExt.getLane(summoner.timeline.lane, summoner.timeline.role) }}
+                        <br/>
+                        <strong>Detalhes: </strong>{% if summoner.stats.kills is defined %}{{ summoner.stats.kills }}{% else %}0{% endif %}/{% if summoner.stats.deaths is defined %}{{ summoner.stats.deaths }}{% else %}0{% endif %}/{% if summoner.stats.assists is defined %}{{ summoner.stats.assists }}{% else %}0{% endif %}
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+</div>

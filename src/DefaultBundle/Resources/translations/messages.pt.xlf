@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file original="ce2b8e40-b802-4196-b6cb-93e63eb4bb42" source-language="en-US" target-language="pt-BR" datatype="html">
+    <body>
+      <trans-unit id="1">
+        <source>SILVER</source>
+        <target>PRATA</target>
+      </trans-unit>
+      <trans-unit id="2">
+          <source>GOLD</source>
+          <target>OURO</target>
+        </trans-unit>
+    </body>
+  </file>
+</xliff>
