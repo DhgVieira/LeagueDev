@@ -8,7 +8,7 @@
         }
     </style>
 {% endblock %}
-<div class="box  span4" onTablet="span6" onDesktop="span4">
+<div class="box blue span4" onTablet="span6" onDesktop="span4">
     <div class="box-header">
         <h2>Time A
         </h2>
@@ -17,7 +17,7 @@
         <ul class="dashboard-list">
             {% for summoner in summoners %}
                 {% if summoner.teamId == 100 %}
-                    <li>
+                    <li style="color: black">
 
                         <a href="#">
                             <img class="avatar"
@@ -26,7 +26,7 @@
                         </a>
 
                         {#<span class="status">#}
-                        <strong>tier: </strong>{{ summoner.highestAchievedSeasonTier | trans}}
+                        <strong>Liga: </strong>{{ summoner.highestAchievedSeasonTier | trans}}
                         {#</span>#}
                         <br/>
 
@@ -44,7 +44,7 @@
         </ul>
     </div>
 </div><!--/span-->
-<div class="box  span4" onTablet="span6" onDesktop="span4">
+<div class="box red span4" onTablet="span6" onDesktop="span4">
     <div class="box-header">
         <h2>Time B
         </h2>
@@ -53,13 +53,13 @@
         <ul class="dashboard-list">
             {% for summoner in summoners %}
                 {% if summoner.teamId == 200 %}
-                    <li>
+                    <li style="color: black">
                         <a href="#">
                             <img class="avatar"
                                  alt="{{ leagueExt.getChampionIcon(summoner.championId)|replace({'.png': ''}) }}"
                                  src="{{ asset('bootstrap/img/champion/'~leagueExt.getChampionIcon(summoner.championId)) }}">
                         </a>
-                        <strong>tier: </strong>{{ summoner.highestAchievedSeasonTier }}
+                        <strong>Liga: </strong>{{ summoner.highestAchievedSeasonTier | trans}}
                         <br/>
                         <strong>Lane: </strong> {{ leagueExt.getLane(summoner.timeline.lane, summoner.timeline.role) }}
                         <br/>
